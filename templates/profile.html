@@ -27,26 +27,28 @@
         </div>
 
         {% if number %}
-            <h3 style="margin-top: 50px;">{{ number.name }} Signups - {{ friendly_number }}</h3>
+            <h3 style="margin-top: 50px;">{{ number.name }} Signups - <a>{{ friendly_number }}</a></h3>
 
-            <table>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Time Sent</th>
-                </tr>
-                {% for m in messages %}
+            {% if messages %}
+                <table>
                     <tr>
-                        <td>{{ forloop.counter }}</td>
-                        <td>{{ m.name }}</td>
-                        <td>{{ m.email }}</td>
-                        <td>{{ m.friendly_from_number }}</td>
-                        <td>{{ m.created_at }}</td>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Time Sent</th>
                     </tr>
-                {% endfor %}
-            </table>
+                    {% for m in messages %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ m.name }}</td>
+                            <td>{{ m.email }}</td>
+                            <td>{{ m.friendly_from_number }}</td>
+                            <td>{{ m.created_at }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
 
         {% endif %}
 
