@@ -62,6 +62,36 @@ def register(request):
 
 def profile(request):
 
+    try:
+        number = Number.objects.get(user=request.user)
+        friendly_number = '('+str(number.number)[:3]+') '+str(number.number)[3:6]+'-'+str(number.number)[6:10]
+        # messages = twilio_client.sms.messages.list(to=str(number.number)[:10])
+
+        messages = twilio_client.sms.messages.list(to="6503534542")
+        for i, m in enumerate(messages):
+            from_number = float(m.from_[2:])
+            try:
+                signup = Signup.objects.get(number=float(from_number), group_number=float(number.number))
+                pass
+            except:
+                friendly_from_number = '('+str(from_number)[:3]+') '+str(from_number)[3:6]+'-'+str(from_number)[6:10]
+                body = m.body.split()
+                email = ''
+                for b in body:
+                    if "," in b:
+                        b.remove(',')
+                    if "@" in b:
+                        email = b
+                        body.remove(b)
+                name = " ".join(body)
+                signup = Signup(user=request.user, number = from_number, friendly_from_number=friendly_from_number, name=name, email=email, group_name=number.name, group_number=number.number)
+                signup.save()
+
+
+        messages = Signup.objects.filter(user=request.user)
+    except:
+        pass
+
     return render(request, "profile.html", locals())
 
 def create(request):
@@ -81,7 +111,7 @@ def create(request):
 
             for number in twilio_client.phone_numbers.list(api_version="2010-04-01"):
                 if number.phone_number == n.number:
-                    number.update(SmsUrl=sms_url)
+                    number.update(SmsUrl=sms_url, SmsFallbackUrl='http://twimlets.com/echo?Twiml=%3CResponse%3E%3CSms%3EThanks%20for%20signing%20up%3C%2FSms%3E%3C%2FResponse%3E')
                     break
 
         else:

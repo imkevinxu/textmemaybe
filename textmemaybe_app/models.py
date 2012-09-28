@@ -20,4 +20,13 @@ class Number(Base):
     message = models.CharField(blank=True, null=True, max_length=255)
     sms_url = models.URLField(blank=True, null=True)
 
+class Signup(Base):
+    user = models.ForeignKey(User)
+    number = models.FloatField()
+    friendly_from_number = models.CharField(blank=True, null=True, max_length=255)
+    group_name = models.CharField(blank=True, null=True, max_length=255)
+    group_number = models.FloatField(blank=True, null=True)
+    name = models.CharField(blank=True, null=True, max_length=255)
+    email = models.CharField(blank=True, null=True, max_length=255)
+
 #     def __unicode__(self):
