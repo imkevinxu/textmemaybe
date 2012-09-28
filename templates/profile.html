@@ -9,23 +9,25 @@
 <div id="profile" class="row">
     <div class="twelve columns">
 
-        <h3 class="fl">Welcome {{ user.email }}</h3>
+        <div class="panel">
+            <h3 class="fl">Welcome {{ user.email }}</h3>
 
-        {% if not number %}
-            <a href="#" class="large success button fr" data-reveal-id="numberModal">Create your number</a>
-        {% endif %}
+            {% if not number %}
+                <a href="#" class="large success button fr" data-reveal-id="numberModal">Create your number</a>
+            {% endif %}
 
-        <div class="clear"></div>
+            <div class="clear"></div>
 
-        <ol>
-            <li>Create your number</li>
-            <li>Have people text their name and email to number</li>
-            <li>???</li>
-            <li>Be awesome, true story</li>
-        </ol>
+            <ol style="margin-left: 20px;">
+                <li>Create your number</li>
+                <li>Have people text their name and email to number</li>
+                <li>?????</li>
+                <li>Be awesome, true story</li>
+            </ol>
+        </div>
 
         {% if number %}
-            <h3>{{ number.name }} - {{ friendly_number }}</h3>
+            <h3 style="margin-top: 50px;">{{ number.name }} Signups - {{ friendly_number }}</h3>
 
             <table>
                 <tr>

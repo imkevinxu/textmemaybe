@@ -65,7 +65,17 @@ header #right_nav i {
     top: 1px;
 }
 
+table tr th {
+    font-size: 1.4rem;
+}
 
+table tbody tr td {
+    font-size: 1.8rem;
+}
+
+ol li {
+    font-size: 2rem;
+}
 
 
 
