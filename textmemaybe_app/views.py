@@ -56,6 +56,7 @@ def register(request):
     if request.POST.get('email') and request.POST.get('password'):
         user = User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
         user.save()
+        login(request, user)
         return redirect('profile')
 
     return redirect('index')
