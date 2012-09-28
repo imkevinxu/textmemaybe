@@ -13,4 +13,7 @@ urlpatterns = patterns('textmemaybe_app.views',
     url(r'^login/$', smartlogin, kwargs=dict(template_name='login.html'), name='login'),
     url(r'^logout/$', logout, kwargs=dict(next_page='/'), name='logout'),
 
+    url(r'^register/$', 'register', name='register'),
+    url(r'^profile/$', 'profile', name='profile'),
+
 )

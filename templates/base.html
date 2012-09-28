@@ -71,6 +71,7 @@
                         {% if user.is_authenticated %}
                             <a href="{% url logout %}" class="small secondary button"><i class="foundicon-lock"></i>Logout</a>
                         {% else %}
+                            <a href="#" class="small success button" data-reveal-id="registerModal"><i class="accessibility foundicon-key"></i>Register</a>
                             <a href="{% url login %}" class="small secondary button"><i class="accessibility foundicon-key"></i>Log In</a>
                         {% endif %}
                     </div>
@@ -91,6 +92,20 @@
             </footer>
 
         </div>
+    </div>
+
+    <div id="registerModal" class="reveal-modal">
+        <h2>Get your number!</h2>
+
+        <form action="{% url register %}" method="post">{% csrf_token %}
+
+            <label for="email">Email:</label> <input id="email" type="text" name="email" maxlength="30">
+            <label for="password">Password:</label> <input type="password" name="password" id="password">
+            <input class="success button" type="submit" value="Register" />
+
+        </form>
+
+        <a class="close-reveal-modal">&#215;</a>
     </div>
     {# End Content #}
 

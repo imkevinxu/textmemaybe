@@ -8,16 +8,74 @@
 
 <div id="main" class="row">
     <div class="twelve columns">
-        <h2>Thanks for using Django Project Builder!</h2>
+        <h2>Create a phone number to <a>sign-in</a> guests</h2>
         <blockquote>
-            <h5 style="margin-top: 0">You are using a custom fork by <a href="https://github.com/imkevinxu" target="_blank">imkevinxu</a></h5>
+            <li><h5 style="margin-top: 0">No more paper sign-in sheets</h5></li>
+            <li><h5>Less waiting on slow line</h5></li>
+            <li><h5>More awesome and cats</h5></li>
 
-            <p>It's highly experimental and constantly being updated with random best practices so check out the fork on <a href="https://github.com/imkevinxu/django-projectbuilder" target="_blank">Github</a> or email Kevin at <a href="mailto:kevin@imkevinxu.com?Subject=Awesome Django Project Builder Fork!" target="_blank">kevin@imkevinxu.com</a> and let him know what you think!</p>
+            <p>Just built today for the Activities Fair! Please email Kevin at <a href="mailto:kevinx@stanford.edu?Subject=Textmemaybe" target="_blank">kevinx@stanford.edu</a> and let him know what you think!</p>
         </blockquote>
 
         <br/>
-        <h5>Original DPB built by the kickass people at <a href="http://builtbyptm.com/blog/announcing-django-project-builder-v01/" target="_blank">PTM</a></h5>
-        <p>Feel free to contribute improvements to the original project on <a href="https://github.com/prototypemagic/django-projectbuilder" target="_blank">the GitHub page</a></p>
+        <h5>Gratuitious picture of cats</h5>
+        <img src="http://placekitten.com/1000/500" alt="">
+
+
+        <!-- {% if not user.is_authenticated %}
+            <img src="http://placekitten.com/1000/500" alt="">
+        {% else %}
+            <h1>Welcome {{ user.first_name }} :)</h1>
+
+            <h3>Have everyone text the number with their Name followed by Email</h3>
+
+            <br/><br/>
+
+            <h1>AACF <span style="color: purple">(646) 490-0572</span></h1>
+
+            <br/><br/>
+
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Time Sent</th>
+                </tr>
+                {% for m in messages %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ m.name }}</td>
+                        <td>{{ m.email }}</td>
+                        <td>{{ m.from_ }}</td>
+                        <td>{{ m.date_sent }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <br/><br/>
+
+            <h1>World Vision <span style="color: purple">(646) 480-6507</span></h1>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Time Sent</th>
+                </tr>
+                {% for m in messages2 %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ m.name }}</td>
+                        <td>{{ m.email }}</td>
+                        <td>{{ m.from_ }}</td>
+                        <td>{{ m.date_sent }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %} -->
     </div>
 </div>
 
