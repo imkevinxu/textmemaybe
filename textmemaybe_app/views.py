@@ -80,7 +80,7 @@ def create(request):
             n.save()
 
             for number in twilio_client.phone_numbers.list(api_version="2010-04-01"):
-                if number.phone_number == '+' + n.number:
+                if number.phone_number == n.number:
                     number.update(SmsUrl=sms_url)
                     break
 
