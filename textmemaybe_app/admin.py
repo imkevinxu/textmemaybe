@@ -1,10 +1,10 @@
 from textmemaybe_app.models import *
 from django.contrib import admin
 
-# class DataAdmin(admin.ModelAdmin):
-#     list_display = ('data', 'created_at')
-#     list_filter = ('created_at',)
-#     ordering = ['-created_at']
-#     search_fields = ['data']
-# 
-# admin.site.register(Data, DataAdmin)
+class NumberAdmin(admin.ModelAdmin):
+    list_display = ('user', 'number', 'name', 'message', 'created_at')
+    list_filter = ('created_at', 'user', 'number', 'name',)
+    ordering = ['-created_at', 'user']
+    search_fields = ['user', 'number', 'name']
+
+admin.site.register(Number, NumberAdmin)

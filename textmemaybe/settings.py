@@ -150,9 +150,14 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     'south',
     'debug_toolbar',
+    'django_twilio',
     'textmemaybe_app',
 
 )
+
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+TWILIO_DEFAULT_CALLERID = "Textmemaybe"
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

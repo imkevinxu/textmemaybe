@@ -16,6 +16,8 @@ from textmemaybe_app.models import *
 from textmemaybe_app.model_forms import *
 from textmemaybe_app.forms import *
 
+from django_twilio.client import twilio_client
+
 #@login_required
 def index(request):
     if request.user.is_authenticated():
@@ -57,11 +59,20 @@ def register(request):
 
 def profile(request):
 
-
-
     return render(request, "profile.html", locals())
 
 def create(request):
+    if request.POST.get('name') and request.POST.get('message'):
+        numbers = twilio_client.phone_numbers.search(area_code=650)
+        if numbers:
+            # numbers[0].purchase()
+
+            n = Number(user=request.user, number=numbers[0].phone_number, name=request.POST['name'], message=request.POST['message'])
+            n.save()
+
+        else:
+            error = "No numbers in 650 available"
+            print error
 
 
-    pass
+    return redirect('profile')
