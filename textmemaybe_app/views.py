@@ -65,9 +65,9 @@ def profile(request):
     try:
         number = Number.objects.get(user=request.user)
         friendly_number = '('+str(number.number)[:3]+') '+str(number.number)[3:6]+'-'+str(number.number)[6:10]
-        # messages = twilio_client.sms.messages.list(to=str(number.number)[:10])
+        messages = twilio_client.sms.messages.list(to=str(number.number)[:10])
 
-        messages = twilio_client.sms.messages.list(to="6503534542")
+        # messages = twilio_client.sms.messages.list(to="6503534542")
         for i, m in enumerate(messages):
             from_number = float(m.from_[2:])
             try:
