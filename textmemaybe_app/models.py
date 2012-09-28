@@ -15,7 +15,7 @@ class Base(models.Model):
 
 class Number(Base):
     user = models.ForeignKey(User)
-    number = models.IntegerField()
+    number = models.FloatField()
     name = models.CharField(blank=True, null=True, max_length=255)
     message = models.CharField(blank=True, null=True, max_length=255)
     sms_url = models.URLField(blank=True, null=True)
