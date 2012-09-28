@@ -75,7 +75,7 @@ def create(request):
 
             # path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'sms',n.number[1:]), ContentFile('<Response><Sms>'+n.message+'</Sms></Response>'))
             # sms_url = "http://textmemaybe.co/media/sms/" + n.number[1:]
-            sms_url = 'http://twimlets.com/echo?Twiml=%3CResponse%3E%3CSms%3E'+n.message+'%3C%2FSms%3E%3C%2FResponse%3E'
+            sms_url = 'http://twimlets.com/echo?Twiml=%3CResponse%3E%3CSms%3E'+n.message.replace(' ', '%20')+'%3C%2FSms%3E%3C%2FResponse%3E'
             n.sms_url = sms_url
             n.save()
 
