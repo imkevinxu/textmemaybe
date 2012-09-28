@@ -60,3 +60,8 @@ def profile(request):
 
 
     return render(request, "profile.html", locals())
+
+def create(request):
+
+
+    pass

@@ -13,10 +13,10 @@ class Base(models.Model):
     class Meta:
         abstract = True
 
-# class Number(Base):
-#     user = models.ForeignField(User)
-#     number = models.IntegerField()
-#     name = models.CharField(blank=True, null=True, max_length=255)
-#     message = models.CharField(blank=True, null=True, max_length=255)
+class Number(Base):
+    user = models.ForeignKey(User)
+    number = models.IntegerField()
+    name = models.CharField(blank=True, null=True, max_length=255)
+    message = models.CharField(blank=True, null=True, max_length=255)
 
 #     def __unicode__(self):

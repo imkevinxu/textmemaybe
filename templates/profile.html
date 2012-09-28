@@ -9,9 +9,36 @@
 <div id="profile" class="row">
     <div class="twelve columns">
 
-        <h3>Welcome {{ user.email }}</h3>
+        <h3 class="fl">Welcome {{ user.email }}</h3>
+
+        <a href="#" class="large success button fr" data-reveal-id="numberModal">Create your number</a>
+        <div class="clear"></div>
+
+        <ol>
+            <li>Create your number</li>
+            <li>Have people text their name and email to number</li>
+            <li>???</li>
+            <li>Be awesome, true story</li>
+        </ol>
+
 
     </div>
+</div>
+
+
+
+<div id="numberModal" class="reveal-modal">
+    <h2>Final step</h2>
+
+    <form action="{% url create %}" method="post">{% csrf_token %}
+
+        <label for="name">Group Name:</label> <input id="name" type="text" name="name" maxlength="30">
+        <label for="message">Message:</label> <textarea type="message" name="message" id="message">Thanks for coming to see </textarea>
+        <input class="success button" type="submit" value="Create" />
+
+    </form>
+
+    <a class="close-reveal-modal">&#215;</a>
 </div>
 
 {% endblock %}

@@ -1,6 +1,10 @@
 jQuery(document).ready(function ($) {
 
   /* Javascript masterminded by Kevin Xu <kevin@imkevinxu.com>  */
+  $('#name').bind('textchange', function (event, previousText) {
+    console.log(previousText);
+    $('#message').val('Thanks for coming to see ' + $(this).val());
+  });
 
 
 
@@ -9,7 +13,6 @@ jQuery(document).ready(function ($) {
 
 
 
-  
 
   /* TABS --------------------------------- */
   /* Remove if you don't need :) */
@@ -91,7 +94,7 @@ jQuery(document).ready(function ($) {
   $('.button.disabled').on('click.fndtn', function (event) {
     event.preventDefault();
   });
-  
+
 
   /* SPLIT BUTTONS/DROPDOWNS */
   $('.button.dropdown > ul').addClass('no-hover');
@@ -122,7 +125,7 @@ jQuery(document).ready(function ($) {
   $('.button.dropdown.large > ul').css('top', largeButtonHeight);
   $('.button.dropdown.small > ul').css('top', smallButtonHeight);
   $('.button.dropdown.tiny > ul').css('top', tinyButtonHeight);
-  
+
   $('.button.dropdown.up:not(.large):not(.small):not(.tiny) > ul').css('top', 'auto').css('bottom', normalButtonHeight - 2);
   $('.button.dropdown.up.large > ul').css('top', 'auto').css('bottom', largeButtonHeight - 2);
   $('.button.dropdown.up.small > ul').css('top', 'auto').css('bottom', smallButtonHeight - 2);

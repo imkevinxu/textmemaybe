@@ -94,19 +94,22 @@
         </div>
     </div>
 
-    <div id="registerModal" class="reveal-modal">
-        <h2>Get your number!</h2>
 
-        <form action="{% url register %}" method="post">{% csrf_token %}
+    {% if not user.is_authenticated %}
+        <div id="registerModal" class="reveal-modal">
+            <h2>Get your number!</h2>
 
-            <label for="email">Email:</label> <input id="email" type="text" name="email" maxlength="30">
-            <label for="password">Password:</label> <input type="password" name="password" id="password">
-            <input class="success button" type="submit" value="Register" />
+            <form action="{% url register %}" method="post">{% csrf_token %}
 
-        </form>
+                <label for="email">Email:</label> <input id="email" type="text" name="email" maxlength="30">
+                <label for="password">Password:</label> <input type="password" name="password" id="password">
+                <input class="success button" type="submit" value="Register" />
 
-        <a class="close-reveal-modal">&#215;</a>
-    </div>
+            </form>
+
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
+    {% endif %}
     {# End Content #}
 
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
@@ -120,6 +123,7 @@
     <script src="/media/js/foundation.responsive-tables.js"></script>
     <script src="/media/js/foundation.reveal.js"></script>
     <script src="/media/js/foundation.tooltips.js"></script>
+    <script src="/media/js/jquery.textchange.min.js"></script>
     <script src="/media/js/app.js"></script>
 
     {% block javascript %}{% endblock %}
