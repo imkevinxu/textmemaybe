@@ -68,19 +68,21 @@ def create(request):
     if request.POST.get('name') and request.POST.get('message'):
         numbers = twilio_client.phone_numbers.search(area_code=650)
         if numbers:
-            # numbers[0].purchase()
+            numbers[0].purchase()
 
-            # n = Number(user=request.user, number=numbers[0].phone_number, name=request.POST['name'], message=request.POST['message'])
-            # n.save()
+            n = Number(user=request.user, number=numbers[0].phone_number, name=request.POST['name'], message=request.POST['message'])
+            n.save()
 
-            # path = default_storage.save('sms/'+n.number[1:], ContentFile('<Response><Sms>'+n.message+'</Sms></Response>'))
-            path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'sms','hahaha'), ContentFile('<Response><Sms>Woah</Sms></Response>'))
-            print path
+            # path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'sms',n.number[1:]), ContentFile('<Response><Sms>'+n.message+'</Sms></Response>'))
             # sms_url = "http://textmemaybe.co/media/sms/" + n.number[1:]
-            # n.sms_url = sms_url
-            # n.save()
+            sms_url = 'http://twimlets.com/echo?Twiml=%3CResponse%3E%3CSms%3E'+n.message+'%3C%2FSms%3E%3C%2FResponse%3E'
+            n.sms_url = sms_url
+            n.save()
 
-            # numbers[0].update(SmsUrl=sms_url)
+            for number in twilio_client.phone_numbers.list(api_version="2010-04-01"):
+                if number.phone_number == '+' + n.number:
+                    number.update(SmsUrl=sms_url)
+                    break
 
         else:
             error = "No numbers in 650 available"
