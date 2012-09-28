@@ -16,6 +16,7 @@ from textmemaybe_app.models import *
 from textmemaybe_app.model_forms import *
 from textmemaybe_app.forms import *
 
+from django.conf import settings
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django_twilio.client import twilio_client
@@ -73,7 +74,7 @@ def create(request):
             # n.save()
 
             # path = default_storage.save('sms/'+n.number[1:], ContentFile('<Response><Sms>'+n.message+'</Sms></Response>'))
-            path = default_storage.save('sms/haha', ContentFile('<Response><Sms>Woah</Sms></Response>'))
+            path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'sms','hahaha'), ContentFile('<Response><Sms>Woah</Sms></Response>'))
             print path
             # sms_url = "http://textmemaybe.co/media/sms/" + n.number[1:]
             # n.sms_url = sms_url
