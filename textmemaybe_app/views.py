@@ -56,8 +56,18 @@ def register(request):
     if request.POST.get('email') and request.POST.get('password'):
         user = User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
         user.save()
-        login(request, user)
-        return redirect('profile')
+        user = authenticate(username=request.POST['email'], password=request.POST['password'])
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                # Redirect to a success page.
+                return redirect('profile')
+            else:
+                # Return a 'disabled account' error message
+                pass
+        else:
+            # Return an 'invalid login' error message.
+            pass
 
     return redirect('index')
 
@@ -85,6 +95,7 @@ def profile(request):
                         email = b
                         body.remove(b)
                 name = " ".join(body)
+                #time sent is off
                 signup = Signup(user=request.user, number = from_number, friendly_from_number=friendly_from_number, name=name, email=email, group_name=number.name, group_number=number.number)
                 signup.save()
 
